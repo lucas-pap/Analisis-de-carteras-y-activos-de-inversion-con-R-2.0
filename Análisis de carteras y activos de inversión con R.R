@@ -1,5 +1,5 @@
 ####################################################################################################
-##                      Analisis de carteras y activos de invercion con R                         ##
+##                      An谩lisis de carteras y activos de inversi贸n con R                         ##
 ##                                                                                                ##
 ####################################################################################################
 
@@ -62,14 +62,14 @@ rm = mean(na.omit(retornos_sp500))
 varm = var(na.omit(retornos_sp500))
 
 
-### Graficamos la evolucion de los precios de cada acci髇
+### Graficamos la evolucion de los precios de cada acci贸n
 
 precios %>%
   ggplot(aes(date,adjusted,color = symbol)) +
   geom_line(show.legend = F) +
   facet_wrap(~symbol,scales = 'free_y') +
   labs(x='Fecha',y = 'Precio Ajustado',title = 'Grafico 1: Camino de precios observados',
-       caption = 'Fuente: elaboraci髇 propia.') +
+       caption = 'Fuente: elaboraci贸n propia.') +
   scale_x_date(date_breaks = '3 months',
                date_labels = '%b\n%y') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
@@ -99,8 +99,8 @@ plot_retd %>%
   geom_line(show.legend = F) +
   geom_hline(yintercept = 0) +
   facet_wrap(~symbol,scales = 'free_y') +
-  labs(x = 'Fecha', y = 'Retornos diarios', title = 'Gr醘ico 2: Retornos Diarios',
-       caption = 'Fuente: Elaboraci髇 propia.') +
+  labs(x = 'Fecha', y = 'Retornos diarios', title = 'Gr谩fico 2: Retornos Diarios',
+       caption = 'Fuente: Elaboraci贸n propia.') +
   scale_x_date(date_breaks = '3 months', date_labels = '%b\n%y') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5))
@@ -109,8 +109,8 @@ plot_retd %>%
   ggplot(aes(retornos,y = ..density..,color = symbol)) +
   geom_histogram(show.legend = F,bins = 15) +
   facet_wrap(~symbol,scales = 'free') +
-  labs(x = 'Retornos', y = 'Retornos diarios (Densidad)', title = 'Gr醘ico 3: Histograma de Retornos Diarios',
-       caption = 'Fuente: Elaboraci髇 propia.') +
+  labs(x = 'Retornos', y = 'Retornos diarios (Densidad)', title = 'Gr谩fico 3: Histograma de Retornos Diarios',
+       caption = 'Fuente: Elaboraci贸n propia.') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8,angle = -90,vjust = 0.5,hjust = 0.5))
@@ -122,7 +122,7 @@ plot_retm %>%
   geom_hline(yintercept = 0) +
   facet_wrap(~symbol,scales = 'free_y') +
   labs(x = 'Fecha', y = 'Retornos mensuales', title = 'Retornos Mensuales',
-       caption = 'Fuente: Elaboraci髇 propia.') +
+       caption = 'Fuente: Elaboraci贸n propia.') +
   scale_x_date(date_breaks = '3 months', date_labels = '%b\n%y') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5))
@@ -132,7 +132,7 @@ plot_retm %>%
   geom_histogram(show.legend = F,bins = 10) +
   facet_wrap(~symbol,scales = 'free') +
   labs(x = 'Retornos', y = 'Retornos mensuales (Densidad)', title = 'Histograma de Retornos Mensuales',
-       caption = 'Fuente: Elaboraci髇 propia.') +
+       caption = 'Fuente: Elaboraci贸n propia.') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8,angle = -90,vjust = 0.5,hjust = 0.5))
@@ -143,7 +143,7 @@ plot_retm %>%
 dygraph(retornos_d, main = 'Grafico 4: Dygraph Retornos Diarios.') 
 
 
-### Gr醘ico de las correlaciones
+### Gr谩fico de las correlaciones
 
 corrplot(cor(retornos_d),method = 'color', cl.lim= c(0,1),title = 'Correlaciones entre las acciones.',
          tl.col = 'black',tl.offset = 0.3,mar=c(2,0,4,0))
@@ -215,11 +215,11 @@ ggplot(df,aes(x="",y=Porcentaje, fill=Activos))+
   coord_polar(theta = "y")+
   scale_fill_brewer(palette = "Set1")+
   theme_void()+
-  labs(title="Grafico 6: Composici髇 del Portafolio", caption = 'Fuente: elaboraci髇 propia.') +
+  labs(title="Grafico 6: Composici贸n del Portafolio", caption = 'Fuente: elaboraci贸n propia.') +
   theme(plot.caption = element_text(size=10, hjust=0.05, vjust = 4, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5))
 
-### Gr醘ico de las correlaciones entre activos del portafolio:
+### Gr谩fico de las correlaciones entre activos del portafolio:
 
 corrplot(cor(retornos_p),method = 'color', cl.lim= c(0,1),title = 'Grafico 7: Correlaciones entre las acciones del portafolio.',
          tl.col = 'black',tl.offset = 0.3,mar=c(0,0,7,0))
@@ -233,7 +233,7 @@ corrplot(cor(retornos_p),method = 'color', cl.lim= c(0,1),title = 'Grafico 7: Co
 ##                                   ##
 #######################################
 
-# Definimos los parametros para el modelo de simulaci髇
+# Definimos los parametros para el modelo de simulaci贸n
 
 datos_p = tail(retornos_p,n)
 
@@ -250,34 +250,34 @@ valores.port = as.matrix(retornos_p) %*% as.matrix(activos_p)
 media.port = mean(valores.port)
 sd.port = sd(valores.port)
 
-P0_p = as.matrix(lastprecio_p) %*% as.matrix(activos_p) # Precio inicial de donde parte la simulaci髇
+P0_p = as.matrix(lastprecio_p) %*% as.matrix(activos_p) # Precio inicial de donde parte la simulaci贸n
 
 
-###Par醡etros del modelo----
+###Par谩metros del modelo----
 
 m = 1000 ##Cantidad de simulaciones
 P0 = P0_p[1,1] #Precio inicial del activo
 mu = media.port #Media del rendimiento
-sigma = sd.port #Desv韔 del rendimiento
-Te = 44 #Per韔do de simulaci髇
+sigma = sd.port #Desv铆o del rendimiento
+Te = 44 #Per铆odo de simulaci贸n
 n = 44 #Cantidad de time steps
-dt = Te/n   #Tama駉 de cada time step
+dt = Te/n   #Tama帽o de cada time step
 
 
-###Simulaci髇----
+###Simulaci贸n----
 
 sim = matrix(data = rep(P0,m), nrow = m, ncol = n + 1, byrow = F) #Creamos la matriz donde se guardan los caminos de precios
 
 for(i in 1:m){ #hace el bucle para cada simulacion
-  for(j in 2:(n+1)){ #hace un shock aleatorio para cada per韔do
+  for(j in 2:(n+1)){ #hace un shock aleatorio para cada per铆odo
     sim[i,j]= sim[i,j-1]*exp((mu - 0.5*(sigma^2))*dt + sigma*sqrt(dt)*rnorm(1))
   }
 }
 
 
 
-### Gr醘ico ----
-### Colores seg鷑 media----
+### Gr谩fico ----
+### Colores seg煤n media----
 
 dt_dias = round(dt,0)
 
@@ -309,10 +309,10 @@ for(i in 1:(n+1)){
 }
 
 
-##Armado de Gr醘icos----
+##Armado de Gr谩ficos----
 
 plot(x = dt_seq, y = sim[1,], type = "l", ylim = c(min(sim), max(sim)),
-     main = "Gr醘ico 8: Simulaci髇 del Valor del Portafolio", sub = "Fuente: elaboraci髇 propia.",
+     main = "Gr谩fico 8: Simulaci贸n del Valor del Portafolio", sub = "Fuente: elaboraci贸n propia.",
      xlab = "Tiempo", ylab = "Precio", col = Asigna_Color(1))
 
 #Grafica los m-1 restantes caminos:
@@ -335,8 +335,8 @@ colnames(ultimas.sim) = 'Sim'
 ultimas.sim %>%
   ggplot() +
   geom_histogram(aes(x = Sim,y = ..density.., color = 'red'),show.legend = F,bins = 10) +
-  labs(x = 'Valor', y = 'Densidad', title = 'Gr醘ico 9: Histograma de Valores Simulados',
-       caption = 'Fuente: Elaboraci髇 propia.') +
+  labs(x = 'Valor', y = 'Densidad', title = 'Gr谩fico 9: Histograma de Valores Simulados',
+       caption = 'Fuente: Elaboraci贸n propia.') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8,angle = -90,vjust = 0.5,hjust = 0.5)) +
@@ -365,7 +365,7 @@ preciosMC2 = filter(preciosMC, t >= 252)
 
 plot(x = preciosMC$t, y = preciosMC[,1], type = "l",
      ylim = c(min(preciosMC[,-ncol(preciosMC)]), max(preciosMC[,-ncol(preciosMC)])),
-     main = "Gr醘ico 12: Valores reales del portafolio + Simulaci髇", sub = "Fuente: elaboraci髇 propia.",
+     main = "Gr谩fico 12: Valores reales del portafolio + Simulaci贸n", sub = "Fuente: elaboraci贸n propia.",
      xlab = "Tiempo", ylab = "Precio", col = Asigna_Color(1))
 
 #Grafica los m-1 restantes caminos:
@@ -383,7 +383,7 @@ legend('bottom',title = 'Precio Promedio',
 
 #######################################
 ##                                   ##
-##     Modelo de Predicci髇: VAR     ##
+##     Modelo de Predicci贸n: VAR     ##
 ##                                   ##
 #######################################
 
@@ -420,7 +420,7 @@ modeloVAR = VAR(retornos_p,p =23)
 plot(modeloVAR)
 
 
-### Corremos los test de autocorrelaci髇 y de ra韈es unitarias
+### Corremos los test de autocorrelaci贸n y de ra铆ces unitarias
 
 residuos = residuals(modeloVAR)
 
@@ -466,15 +466,15 @@ modeloVAR.graph %>% ggplot(aes(index(modeloVAR.graph),fcst,color = Symbol)) +
   geom_line(aes(y = lower),linetype = 'dotted',show.legend = F) +
   geom_line(aes(y = upper),linetype = 'dotted',show.legend = F) +
   facet_wrap(~Symbol,scales = 'free') +
-  labs(x = 'Tiempo', y = 'Retornos diarios', title = 'Grafico 10: Predicci髇 de Retornos',
-       caption = 'Fuente: elaboraci髇 propia') +
+  labs(x = 'Tiempo', y = 'Retornos diarios', title = 'Grafico 10: Predicci贸n de Retornos',
+       caption = 'Fuente: elaboraci贸n propia') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8,vjust = 0.5,hjust = 0.5))
   
 
 
-### Introducimos los 鷏timos precios reales para calcular los precios proyectados:
+### Introducimos los 煤ltimos precios reales para calcular los precios proyectados:
 lastprecio_p = tail(precios_ts[,tickers_p],1)
 nas = matrix(rep(NA,ncol(retornos_p)*p),nrow = p)
 colnames(nas) = colnames(lastprecio_p)
@@ -518,7 +518,7 @@ graph.pred.precios %>% ggplot(aes(index(graph.pred.precios),Prediccion,color = S
   geom_line(show.legend = F) +
   facet_wrap(~Symbol,scales = 'free') +
   labs(x = 'Tiempo', y = 'Precios diarios', title = 'Prediccion de Precios',
-       caption = 'Fuente: elaboraci髇 propia') +
+       caption = 'Fuente: elaboraci贸n propia') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8,vjust = 0.5,hjust = 0.5))
@@ -531,15 +531,15 @@ graph.pred.precios %>% ggplot(aes(index(graph.pred.precios),Prediccion,color = S
   geom_line(aes(y = Upper), linetype = 'dotted', show.legend = F) +
   geom_line(aes(y = Lower), linetype = 'dotted', show.legend = F) +
   facet_wrap(~Symbol,scales = 'free') +
-  labs(x = 't', y = 'Precios diarios', title = 'Predicci髇 de Precios (con IC)',
-       caption = 'Fuente: elaboraci髇 propia') +
+  labs(x = 't', y = 'Precios diarios', title = 'Predicci贸n de Precios (con IC)',
+       caption = 'Fuente: elaboraci贸n propia') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8,vjust = 0.5,hjust = 0.5))
 
 
 
-## Agregamos el camino de precios reales para contrastar con la predicci髇:
+## Agregamos el camino de precios reales para contrastar con la predicci贸n:
 
 total = na.omit(rbind(as.data.frame(precios_ts[,c(tickers_p)]),prediccion_p))
 total.upper = na.omit(rbind(as.data.frame(precios_ts[,c(tickers_p)]),prediccion_upper))
@@ -571,8 +571,8 @@ graph.total %>% ggplot(aes(x = Date)) +
   geom_line(aes(y = Total), color = 'black') +
   geom_line(aes(y = Real, color = Symbol),show.legend = F) +
   facet_wrap(~Symbol,scales = 'free') +
-  labs(x = 'Tiempo', y = 'Precios diarios', title = 'Gr醘ico 11: Camino Real de Precios y Predicci髇',
-       caption = 'Fuente: elaboraci髇 propia') +
+  labs(x = 'Tiempo', y = 'Precios diarios', title = 'Gr谩fico 11: Camino Real de Precios y Predicci贸n',
+       caption = 'Fuente: elaboraci贸n propia') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8, angle = -45,vjust = 0.5,hjust = 0.5))
@@ -588,8 +588,8 @@ portafolio.rend.graph = portafolio.rend.graph %>% gather(Rend,Total,-date)
 
 portafolio.rend.graph %>% ggplot(aes(date,Total,color = Rend)) +
   geom_line() +
-  labs(x = 'Tiempo', y = 'Precios diarios portafolio', title = 'Grafico 13: Evolucion del Portafolio + Predicci髇',
-       caption = 'Fuente: elaboraci髇 propia') +
+  labs(x = 'Tiempo', y = 'Precios diarios portafolio', title = 'Grafico 13: Evolucion del Portafolio + Predicci贸n',
+       caption = 'Fuente: elaboraci贸n propia') +
   theme(plot.caption = element_text(size=8, hjust=0, face="italic", color="black"),
         plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(size = 8,vjust = 0.5,hjust = 0.5))
